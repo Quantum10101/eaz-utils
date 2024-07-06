@@ -43,6 +43,12 @@ const rightTrimmed = eaz.string.trim.wordRight(str, 'word');
 const trimmed = eaz.string.trim.wordBoth(str, 'word');
 ```
 
+### Array Union
+
+```js
+const uniqueNumbers = easy.array.union([1, 2, 3], [2, 3, 4], [4, 5, 6]);
+```
+
 ## Test Suite
 
 Install Bun and run `$ bun test`
