@@ -1,6 +1,6 @@
 # eaz-utils
 
-A collection of useful utilities to make Javascript development easier.
+A cleverly organized set of utilities to make JavaScript development easier.
 
 ## Test Suite
 

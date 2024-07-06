@@ -1,6 +1,6 @@
 {
 	"name": "eaz-utils",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"main": "eaz/index.js",
 	"directories": {
 		"test": "tests"
@@ -10,5 +10,5 @@
 	},
 	"author": "Quantum10101",
 	"license": "MIT",
-	"description": "A collection of useful utilities to make Javascript development easier."
+	"description": "A cleverly organized set of utilities to make JavaScript development easier."
 }
