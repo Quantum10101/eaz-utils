@@ -2,6 +2,37 @@
 
 A cleverly organized set of utilities to make JavaScript development easier.
 
+## Usage
+
+```js
+import eaz from 'eaz-utils';
+```
+
+The utilities are nested within modules in a way that aids natural language recognition and empowers the developer to drill down and find utilities by harnessing the IDE's intellisense on dot notation. Less looking through documentation and more productivity!
+
+## Functions
+
+### String "is a" Checks
+
+```js
+if (eaz.string.is_a.string(str)) ...
+if (eaz.string.is_a.number(numberStr)) ...
+if (eaz.string.is_a.integer(integerStr)) ...
+if (eaz.string.is_a.boolean(booleanStr)) ...
+```
+
+### String Trim
+
+```js
+const leftTrimmed = eaz.string.trim.charsLeft(str, ['/', '\\']);
+const rightTrimmed = eaz.string.trim.charsRight(str, ['/', '\\']);
+const trimmed = eaz.string.trim.charsBoth(str, ['/', '\\']);
+
+const leftTrimmed = eaz.string.trim.wordLeft(str, 'word');
+const rightTrimmed = eaz.string.trim.wordRight(str, 'word');
+const trimmed = eaz.string.trim.wordBoth(str, 'word');
+```
+
 ## Test Suite
 
 Install Bun and run `$ bun test`
