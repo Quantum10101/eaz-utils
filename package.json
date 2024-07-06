@@ -1,14 +1,14 @@
 {
-  "name": "eaz-utils",
-  "version": "0.0.1",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Quantum10101",
-  "license": "MIT",
-  "description": "A collection of useful utilities to make Javascript development easier."
+	"name": "eaz-utils",
+	"version": "0.0.2",
+	"main": "eaz/index.js",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Quantum10101",
+	"license": "MIT",
+	"description": "A collection of useful utilities to make Javascript development easier."
 }
