@@ -21,6 +21,16 @@ if (eaz.string.is_a.integer(integerStr)) ...
 if (eaz.string.is_a.boolean(booleanStr)) ...
 ```
 
+### String Parse
+
+```js
+const num = eaz.string.parse.number(str);
+const int = eaz.string.parse.integer(str);
+const bool = eaz.string.parse.boolean(str);
+const obj = eaz.string.parse.url("http://example.com?var1=one");
+const obj = eaz.string.parse.urlQuery("var1=one&var2=two&var3=three");
+```
+
 ### String Trim
 
 ```js
