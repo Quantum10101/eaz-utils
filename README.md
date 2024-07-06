@@ -2,6 +2,10 @@
 
 A collection of useful utilities to make Javascript development easier.
 
+## Test Suite
+
+Install Bun and run `$ bun test`
+
 ## MIT License
 
 Copyright 2024 Quantum10101
