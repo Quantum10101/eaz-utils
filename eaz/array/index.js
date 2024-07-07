@@ -1,7 +1,7 @@
-function union(...arrays) {
-	return [...new Set(arrays.flat())];
-}
+const object = require("./object");
+const union = require("./union");
 
 module.exports = {
+	object,
 	union,
 }
