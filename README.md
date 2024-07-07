@@ -49,20 +49,27 @@ const trimmed = eaz.string.trim.wordBoth(str, 'word');
 const uniqueNumbers = eaz.array.union([1, 2, 3], [2, 3, 4], [4, 5, 6]);
 ```
 
-### Object Array Group By Key
+### Array Object Group By Key
 
 ```js
 const groupedObjects = eaz.array.object.groupBy(arrObj, "theKey");
 const flatGroupedObjects = eaz.array.object.flatGroupBy(arrObj, "theKey");
 ```
 
-### Object Array Convert To
+### Array Object Convert To
 
 ```js
 const keyedObjects = eaz.array.object.convertTo.keyedObjects(arrObj, "theKey");
 const keyedValues = eaz.array.object.convertTo.keyedValues(arrObj, "theKey", "theValue");
 const flatKeyedObjects = eaz.array.object.convertTo.flatKeyedObjects(arrObj, "theKey");
 const flatKeyedValues = eaz.array.object.convertTo.flatKeyedValues(arrObj, "theKey", "theValue");
+```
+
+### File System
+
+```js
+const filePath = eaz.fileSystem.pathToScript.file();
+const directoryPath = eaz.fileSystem.pathToScript.directory();
 ```
 
 ## Test Suite
