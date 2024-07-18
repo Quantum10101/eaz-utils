@@ -72,6 +72,12 @@ const filePath = eaz.fileSystem.pathToScript.file();
 const directoryPath = eaz.fileSystem.pathToScript.directory();
 ```
 
+### Miscellaneous
+
+```js
+await eaz.sleep(1000);
+```
+
 ## Test Suite
 
 Install Bun and run `$ bun test`
