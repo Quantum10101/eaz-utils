@@ -70,6 +70,9 @@ const flatKeyedValues = eaz.array.object.convertTo.flatKeyedValues(arrObj, "theK
 ```js
 const filePath = eaz.fileSystem.pathToScript.file();
 const directoryPath = eaz.fileSystem.pathToScript.directory();
+const files = eaz.fileSystem.listOf.files(); // current script folder
+const directories = eaz.fileSystem.listOf.directories("../"); // parent folder
+const entities = eaz.fileSystem.listOf.entities("./child-folder"); // child folder
 ```
 
 ### Miscellaneous

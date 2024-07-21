@@ -1,6 +1,6 @@
 {
 	"name": "eaz-utils",
-	"version": "0.7.2",
+	"version": "0.8.0",
 	"main": "eaz/index.js",
 	"types": "eaz/index.d.ts",
 	"directories": {

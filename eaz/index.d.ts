@@ -42,8 +42,14 @@ declare module 'eaz-utils' {
 	
 	export namespace fileSystem {
 		namespace pathToScript {
-			function file(): string;
-			function directory(): string;
+			function file(callStackLevel?: number): string;
+			function directory(callStackLevel?: number): string;
+		}
+		
+		namespace listOf {
+			function files(relativePath?: string): string[];
+			function directories(relativePath?: string): string[];
+			function entities(relativePath?: string): string[];
 		}
 	}
 	

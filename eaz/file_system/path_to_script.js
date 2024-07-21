@@ -1,10 +1,10 @@
-function file() {
+function file(callStackLevel = 0) {
 	// Sadly, we cannot use import.meta.url because it will return the file path of THIS script, not the calling script.
 	
 	const stack = new Error().stack;
 	if (!stack) return "INVALID";
 	
-	const line = stack.split('\n').slice(2, 3)[0];
+	const line = stack.split('\n').slice(2 + callStackLevel, 3 + callStackLevel)[0];
 	if (line.indexOf("(") === -1) return "INVALID";
 	
 	const path = /(?<path>[^\(\s]+):[0-9]+:[0-9]+/.exec(line)?.groups?.path || "";
@@ -12,13 +12,13 @@ function file() {
 	return path.replace("file://", "");
 }
 
-function directory() {
+function directory(callStackLevel = 0) {
 	// Sadly, we cannot use import.meta.url because it will return the file path of THIS script, not the calling script.
 	
 	const stack = new Error().stack;
 	if (!stack) return "INVALID";
 	
-	const line = stack.split('\n').slice(2, 3)[0];
+	const line = stack.split('\n').slice(2 + callStackLevel, 3 + callStackLevel)[0];
 	if (line.indexOf("(") === -1) return "INVALID";
 	
 	let path = /(?<path>[^\(\s]+):[0-9]+:[0-9]+/.exec(line)?.groups?.path || "";
