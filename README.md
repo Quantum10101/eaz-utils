@@ -1,6 +1,6 @@
 # eaz-utils
 
-A cleverly organized set of utilities to make JavaScript development easier.
+A cleverly organized set of utilities to make JavaScript and TypeScript development easier.
 
 ## Usage
 
@@ -70,9 +70,26 @@ const flatKeyedValues = eaz.array.object.convertTo.flatKeyedValues(arrObj, "theK
 ```js
 const filePath = eaz.fileSystem.pathToScript.file();
 const directoryPath = eaz.fileSystem.pathToScript.directory();
-const files = eaz.fileSystem.listOf.files(); // current script folder
-const directories = eaz.fileSystem.listOf.directories("../"); // parent folder
-const entities = eaz.fileSystem.listOf.entities("./child-folder"); // child folder
+const files = eaz.fileSystem.listOf.files(); // current script directory
+const directories = eaz.fileSystem.listOf.directories("../"); // parent directory
+const entities = eaz.fileSystem.listOf.entities("./child-directory"); // child directory
+
+if (eaz.fileSystem.checkPathType("../some/path/to/something") == eaz.fileSystem.PathType.DOES_NOT_EXIST) ...
+
+// Directory functions
+const success = eaz.fileSystem.directory.create("../some/path/to/directory");
+const success = eaz.fileSystem.directory.remove("../some/path/to/directory");
+
+// File functions
+const success = eaz.fileSystem.file.write.text("../some/path/to/file.txt", "hello");
+const success = eaz.fileSystem.file.write.bytes("../some/path/to/file.bin", uint8Array);
+const success = eaz.fileSystem.file.append.text("../some/path/to/file.txt", "hello");
+const success = eaz.fileSystem.file.append.textLine("../some/path/to/file.txt", "hello");
+const success = eaz.fileSystem.file.append.bytes("../some/path/to/file.bin", uint8Array);
+const content = eaz.fileSystem.file.get.size("../some/path/to/file.txt");
+const content = eaz.fileSystem.file.get.text("../some/path/to/file.txt");
+const content = eaz.fileSystem.file.get.bytes("../some/path/to/file.bin");
+const success = eaz.fileSystem.file.remove("../some/path/to/file.bin");
 ```
 
 ### Miscellaneous

@@ -1,6 +1,6 @@
 {
 	"name": "eaz-utils",
-	"version": "0.8.1",
+	"version": "0.9.0",
 	"main": "eaz/index.js",
 	"types": "eaz/index.d.ts",
 	"directories": {
@@ -50,5 +50,5 @@
 	],
 	"author": "Quantum10101",
 	"license": "MIT",
-	"description": "A cleverly organized set of utilities to make JavaScript development easier."
+	"description": "A cleverly organized set of utilities to make JavaScript and TypeScript development easier."
 }

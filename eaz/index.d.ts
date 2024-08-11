@@ -51,6 +51,46 @@ declare module 'eaz-utils' {
 			function directories(relativePath?: string): string[];
 			function entities(relativePath?: string): string[];
 		}
+		
+		function checkPathType(relativePath?: string): PathType;
+		
+		enum PathType {
+			DIRECTORY = "Directory",
+			FILE = "File",
+			SYMBOLIC_LINK = "Symbolic Link",
+			BLOCK_DEVICE = "Block Device",
+			CHARACTER_DEVICE = "Character Device",
+			FIFO = "FIFO",
+			SOCKET = "Socket",
+			DOES_NOT_EXIST = "Does not exist",
+			OTHER = "Other"
+		}
+		
+		namespace directory {
+			function create(relativePath?: string): boolean;
+			function remove(relativePath?: string): boolean;
+		}
+		
+		namespace file {
+			namespace get {
+				function size(relativePath?: string): number;
+				function text(relativePath?: string): string;
+				function bytes(relativePath?: string): Buffer;
+			}
+			
+			namespace write {
+				function text(relativePath: string, content: string): boolean;
+				function bytes(relativePath: string, bytes: Buffer): boolean;
+			}
+			
+			namespace append {
+				function text(relativePath: string, content: string): boolean;
+				function textLine(relativePath: string, content: string): boolean;
+				function bytes(relativePath: string, bytes: Buffer): boolean;
+			}
+			
+			function remove(relativePath?: string): boolean;
+		}
 	}
 	
 	export function sleep(milliseconds: number): void;
