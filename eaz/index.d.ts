@@ -40,6 +40,10 @@ declare module 'eaz-utils' {
 		}
 	}
 	
+	export namespace object {
+		function isEmpty(object: object): boolean;
+	}
+	
 	export namespace fileSystem {
 		namespace pathToScript {
 			function file(callStackLevel?: number): string;
@@ -80,13 +84,13 @@ declare module 'eaz-utils' {
 			
 			namespace write {
 				function text(relativePath: string, content: string): boolean;
-				function bytes(relativePath: string, bytes: Buffer): boolean;
+				function bytes(relativePath: string, bytes: Uint8Array): boolean;
 			}
 			
 			namespace append {
 				function text(relativePath: string, content: string): boolean;
 				function textLine(relativePath: string, content: string): boolean;
-				function bytes(relativePath: string, bytes: Buffer): boolean;
+				function bytes(relativePath: string, bytes: Uint8Array): boolean;
 			}
 			
 			function remove(relativePath?: string): boolean;

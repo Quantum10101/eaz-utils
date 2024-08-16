@@ -65,6 +65,11 @@ const flatKeyedObjects = eaz.array.object.convertTo.flatKeyedObjects(arrObj, "th
 const flatKeyedValues = eaz.array.object.convertTo.flatKeyedValues(arrObj, "theKey", "theValue");
 ```
 
+### Object Functions
+```js
+if (eaz.object.isEmpty(someObject)) ...
+```
+
 ### File System
 
 ```js
