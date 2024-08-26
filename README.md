@@ -97,6 +97,13 @@ const content = eaz.fileSystem.file.get.bytes("../some/path/to/file.bin");
 const success = eaz.fileSystem.file.remove("../some/path/to/file.bin");
 ```
 
+### Cryptography
+
+```js
+const hash = eaz.cryptography.blake2s.hexString("digest this");
+const hash = eaz.cryptography.blake2s.uint8Array("digest this");
+```
+
 ### Miscellaneous
 
 ```js

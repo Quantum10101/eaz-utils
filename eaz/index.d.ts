@@ -97,5 +97,12 @@ declare module 'eaz-utils' {
 		}
 	}
 	
+	export namespace cryptography {
+		namespace blake2s {
+			function hexString (input: any): string;
+			function uint8Array (input: any): Uint8Array;
+		}
+	}
+	
 	export function sleep(milliseconds: number): void;
 }
