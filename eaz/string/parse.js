@@ -32,7 +32,8 @@ function url(str) {
 		tld: "",
 		port: "",
 		path: "",
-		filename: "",
+		directory: "",
+		file: "",
 		ext: "",
 		query: "",
 		fragment: ""
@@ -69,23 +70,36 @@ function url(str) {
 	const pathStart = str.indexOf("/");
 	if (pathStart === -1) {
 		result.path = "";
-		result.filename = "";
+		result.directory = "";
+		result.file = "";
 		result.ext = "";
 	}
 	else {
 		left = str.substring(0, pathStart);
 		right = str.substring(pathStart);
-		result.path = right;
+		result.path = right.endsWith("/") ? right.slice(0, -1) : right;
 		str = left;
-		const extStart = right.indexOf(".");
-		if (extStart === -1) {
-			result.filename = "";
+		
+		const lastSlash = right.lastIndexOf("/");
+		if (lastSlash === -1 || lastSlash === right.length - 1) {
+			result.directory = right.endsWith("/") ? right.slice(0, -1) : right;
+			result.file = "";
 			result.ext = "";
 		}
 		else {
-			result.ext = right.substring(extStart + 1);
-			const filenameStart = right.lastIndexOf("/");
-			result.filename = right.substring(filenameStart + 1);
+			const lastSegment = right.substring(lastSlash + 1);
+			const extStart = lastSegment.lastIndexOf(".");
+			
+			if (extStart === -1) {
+				result.directory = right;
+				result.file = "";
+				result.ext = "";
+			}
+			else {
+				result.directory = right.substring(0, lastSlash);
+				result.file = lastSegment;
+				result.ext = lastSegment.substring(extStart + 1);
+			}
 		}
 	}
 	

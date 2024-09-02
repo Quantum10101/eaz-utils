@@ -339,7 +339,8 @@ test("eaz.string.parse.url", () => {
 	expect(url1Info.tld).toEqual("tld");
 	expect(url1Info.port).toEqual("80");
 	expect(url1Info.path).toEqual("/path/to/file.ext");
-	expect(url1Info.filename).toEqual("file.ext");
+	expect(url1Info.directory).toEqual("/path/to");
+	expect(url1Info.file).toEqual("file.ext");
 	expect(url1Info.ext).toEqual("ext");
 	expect(url1Info.query).toEqual("query");
 	expect(url1Info.fragment).toEqual("frag");
@@ -351,7 +352,8 @@ test("eaz.string.parse.url", () => {
 	expect(url2Info.tld).toEqual("");
 	expect(url2Info.port).toEqual("");
 	expect(url2Info.path).toEqual("/page");
-	expect(url2Info.filename).toEqual("");
+	expect(url2Info.directory).toEqual("/page");
+	expect(url2Info.file).toEqual("");
 	expect(url2Info.ext).toEqual("");
 	expect(url2Info.query).toEqual("");
 	expect(url2Info.fragment).toEqual("");
@@ -363,7 +365,8 @@ test("eaz.string.parse.url", () => {
 	expect(url3Info.tld).toEqual("tld");
 	expect(url3Info.port).toEqual("");
 	expect(url3Info.path).toEqual("/page");
-	expect(url3Info.filename).toEqual("");
+	expect(url3Info.directory).toEqual("/page");
+	expect(url3Info.file).toEqual("");
 	expect(url3Info.ext).toEqual("");
 	expect(url3Info.query).toEqual("");
 	expect(url3Info.fragment).toEqual("frag");
@@ -375,7 +378,8 @@ test("eaz.string.parse.url", () => {
 	expect(url4Info.tld).toEqual("");
 	expect(url4Info.port).toEqual("");
 	expect(url4Info.path).toEqual("");
-	expect(url4Info.filename).toEqual("");
+	expect(url4Info.directory).toEqual("");
+	expect(url4Info.file).toEqual("");
 	expect(url4Info.ext).toEqual("");
 	expect(url4Info.query).toEqual("");
 	expect(url4Info.fragment).toEqual("");
@@ -387,10 +391,41 @@ test("eaz.string.parse.url", () => {
 	expect(url5Info.tld).toEqual("com");
 	expect(url5Info.port).toEqual("");
 	expect(url5Info.path).toEqual("");
-	expect(url5Info.filename).toEqual("");
+	expect(url5Info.directory).toEqual("");
+	expect(url5Info.file).toEqual("");
 	expect(url5Info.ext).toEqual("");
 	expect(url5Info.query).toEqual("var1=one");
 	expect(url5Info.fragment).toEqual("");
+	
+	const url6Info = eaz.string.parse.url("http://example.com/");
+	expect(url6Info.path).toEqual("");
+	expect(url6Info.directory).toEqual("");
+	expect(url6Info.file).toEqual("");
+	expect(url6Info.ext).toEqual("");
+	
+	const url7Info = eaz.string.parse.url("http://example.com/stuff/");
+	expect(url7Info.path).toEqual("/stuff");
+	expect(url7Info.directory).toEqual("/stuff");
+	expect(url7Info.file).toEqual("");
+	expect(url7Info.ext).toEqual("");
+	
+	const url8Info = eaz.string.parse.url("http://example.com/stuff");
+	expect(url8Info.path).toEqual("/stuff");
+	expect(url8Info.directory).toEqual("/stuff");
+	expect(url8Info.file).toEqual("");
+	expect(url8Info.ext).toEqual("");
+	
+	const url9Info = eaz.string.parse.url("http://example.com/stuff/happy.jpg/");
+	expect(url9Info.path).toEqual("/stuff/happy.jpg");
+	expect(url9Info.directory).toEqual("/stuff/happy.jpg");
+	expect(url9Info.file).toEqual("");
+	expect(url9Info.ext).toEqual("");
+	
+	const url10Info = eaz.string.parse.url("http://example.com/stuff/happy.jpg");
+	expect(url10Info.path).toEqual("/stuff/happy.jpg");
+	expect(url10Info.directory).toEqual("/stuff");
+	expect(url10Info.file).toEqual("happy.jpg");
+	expect(url10Info.ext).toEqual("jpg");
 });
 
 test("eaz.string.parse.urlQuery", () => {
