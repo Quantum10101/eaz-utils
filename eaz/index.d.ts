@@ -10,7 +10,19 @@ declare module 'eaz-utils' {
 			function number(str: string): number;
 			function integer(str: string): number;
 			function boolean(str: string): boolean;
-			function url(str: string): URL;
+			function url(str: string): {
+				protocol: string,
+				subdomain: string,
+				domain: string,
+				tld: string,
+				port: string,
+				path: string,
+				directory: string,
+				file: string,
+				ext: string,
+				query: string,
+				fragment: string
+			};
 			function urlQuery(str: string): { [key: string]: string };
 		}
 		
