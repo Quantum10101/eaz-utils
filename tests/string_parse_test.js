@@ -377,8 +377,8 @@ test("eaz.string.parse.url", () => {
 	expect(url4Info.domain).toEqual("localhost");
 	expect(url4Info.tld).toEqual("");
 	expect(url4Info.port).toEqual("");
-	expect(url4Info.path).toEqual("");
-	expect(url4Info.directory).toEqual("");
+	expect(url4Info.path).toEqual("/");
+	expect(url4Info.directory).toEqual("/");
 	expect(url4Info.file).toEqual("");
 	expect(url4Info.ext).toEqual("");
 	expect(url4Info.query).toEqual("");
@@ -390,16 +390,16 @@ test("eaz.string.parse.url", () => {
 	expect(url5Info.domain).toEqual("example");
 	expect(url5Info.tld).toEqual("com");
 	expect(url5Info.port).toEqual("");
-	expect(url5Info.path).toEqual("");
-	expect(url5Info.directory).toEqual("");
+	expect(url5Info.path).toEqual("/");
+	expect(url5Info.directory).toEqual("/");
 	expect(url5Info.file).toEqual("");
 	expect(url5Info.ext).toEqual("");
 	expect(url5Info.query).toEqual("var1=one");
 	expect(url5Info.fragment).toEqual("");
 	
 	const url6Info = eaz.string.parse.url("http://example.com/");
-	expect(url6Info.path).toEqual("");
-	expect(url6Info.directory).toEqual("");
+	expect(url6Info.path).toEqual("/");
+	expect(url6Info.directory).toEqual("/");
 	expect(url6Info.file).toEqual("");
 	expect(url6Info.ext).toEqual("");
 	

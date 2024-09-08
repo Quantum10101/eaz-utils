@@ -69,20 +69,20 @@ function url(str) {
 	
 	const pathStart = str.indexOf("/");
 	if (pathStart === -1) {
-		result.path = "";
-		result.directory = "";
+		result.path = "/";
+		result.directory = "/";
 		result.file = "";
 		result.ext = "";
 	}
 	else {
 		left = str.substring(0, pathStart);
 		right = str.substring(pathStart);
-		result.path = right.endsWith("/") ? right.slice(0, -1) : right;
+		result.path = right.endsWith("/") && right.length > 1 ? right.slice(0, -1) : right;
 		str = left;
 		
 		const lastSlash = right.lastIndexOf("/");
 		if (lastSlash === -1 || lastSlash === right.length - 1) {
-			result.directory = right.endsWith("/") ? right.slice(0, -1) : right;
+			result.directory = right.endsWith("/") && right.length > 1 ? right.slice(0, -1) : right;
 			result.file = "";
 			result.ext = "";
 		}
@@ -100,6 +100,8 @@ function url(str) {
 				result.file = lastSegment;
 				result.ext = lastSegment.substring(extStart + 1);
 			}
+			
+			if (result.directory === "") result.directory = "/";
 		}
 	}
 	
