@@ -1,11 +1,11 @@
 const fs = require('fs');
-const pathToScript = require("../path_to_script");
+const common = require("../../common");
 
-function remove(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
+function remove(path = "") {
+	const fullPath = common.prepareFullPath(path);
 	
 	try {
-		fs.unlinkSync(path);
+		fs.unlinkSync(fullPath);
 	}
 	catch (err) {
 		if (err.code === 'ENOENT') return false;

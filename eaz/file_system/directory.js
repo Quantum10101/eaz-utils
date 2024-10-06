@@ -1,18 +1,19 @@
 const fs = require('fs');
-const pathToScript = require("./path_to_script");
+const common = require("../common");
 
-function create(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	const result = fs.mkdirSync(path, { recursive: true });
+function create(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	
+	const result = fs.mkdirSync(fullPath, { recursive: true });
 	if (result === undefined) return false;
 	return true;
 }
 
-function remove(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
+function remove(path = "") {
+	const fullPath = common.prepareFullPath(path);
 	
 	try {
-		fs.rmdirSync(path);
+		fs.rmdirSync(fullPath);
 	}
 	catch (err) {
 		if (err.code === 'ENOENT') return false;

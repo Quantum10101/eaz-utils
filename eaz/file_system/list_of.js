@@ -1,19 +1,19 @@
 const fs = require('fs');
-const pathToScript = require("./path_to_script");
+const common = require("../common");
 
-function files(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	return fs.readdirSync(path).filter(x => fs.statSync(`${path}/${x}`).isDirectory() === false);
+function files(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	return fs.readdirSync(fullPath).filter(x => fs.statSync(`${fullPath}/${x}`).isDirectory() === false);
 }
 
-function directories(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	return fs.readdirSync(path).filter(x => fs.statSync(`${path}/${x}`).isDirectory() === true);
+function directories(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	return fs.readdirSync(fullPath).filter(x => fs.statSync(`${fullPath}/${x}`).isDirectory() === true);
 }
 
-function entities(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	return fs.readdirSync(path);
+function entities(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	return fs.readdirSync(fullPath);
 }
 
 module.exports = {

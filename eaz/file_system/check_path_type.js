@@ -1,12 +1,12 @@
 const fs = require('fs');
 const PathType = require("./path_type");
-const pathToScript = require("./path_to_script");
+const common = require("../common");
 
-function checkPathType(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
+function checkPathType(path = "") {
+	const fullPath = common.prepareFullPath(path);
 	
 	try {
-		const stats = fs.lstatSync(path);
+		const stats = fs.lstatSync(fullPath);
 		if (stats.isDirectory()) {
 			return PathType.DIRECTORY;
 		}

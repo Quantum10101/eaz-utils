@@ -1,21 +1,21 @@
 const fs = require('fs');
-const pathToScript = require("../path_to_script");
+const common = require("../../common");
 
-function text(relativePath, content) {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	fs.appendFileSync(path, content, 'utf8');
+function text(path, content) {
+	const fullPath = common.prepareFullPath(path);
+	fs.appendFileSync(fullPath, content, 'utf8');
 	return true;
 }
 
-function textLine(relativePath, content) {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	fs.appendFileSync(path, content + '\n', 'utf8');
+function textLine(path, content) {
+	const fullPath = common.prepareFullPath(path);
+	fs.appendFileSync(fullPath, content + '\n', 'utf8');
 	return true;
 }
 
-function bytes(relativePath, bytes) {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	fs.appendFileSync(path, bytes);
+function bytes(path, bytes) {
+	const fullPath = common.prepareFullPath(path);
+	fs.appendFileSync(fullPath, bytes);
 	return true;
 }
 

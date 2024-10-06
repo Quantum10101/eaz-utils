@@ -1,20 +1,20 @@
 const fs = require('fs');
-const pathToScript = require("../path_to_script");
+const common = require("../../common");
 
-function size(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	const stats = fs.lstatSync(path);
+function size(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	const stats = fs.lstatSync(fullPath);
 	return stats.size;
 }
 
-function text(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	return fs.readFileSync(path, 'utf8');
+function text(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	return fs.readFileSync(fullPath, 'utf8');
 }
 
-function bytes(relativePath = "") {
-	const path = pathToScript.directory(1) + "/" + relativePath;
-	return fs.readFileSync(path);
+function bytes(path = "") {
+	const fullPath = common.prepareFullPath(path);
+	return fs.readFileSync(fullPath);
 }
 
 module.exports = {
