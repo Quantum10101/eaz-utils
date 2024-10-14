@@ -63,12 +63,12 @@ declare module 'eaz-utils' {
 		}
 		
 		namespace listOf {
-			function files(relativePath?: string): string[];
-			function directories(relativePath?: string): string[];
-			function entities(relativePath?: string): string[];
+			function files(path?: string): string[];
+			function directories(path?: string): string[];
+			function entities(path?: string): string[];
 		}
 		
-		function checkPathType(relativePath?: string): PathType;
+		function checkPathType(path?: string): PathType;
 		
 		enum PathType {
 			DIRECTORY = "Directory",
@@ -83,29 +83,33 @@ declare module 'eaz-utils' {
 		}
 		
 		namespace directory {
-			function create(relativePath?: string): boolean;
-			function remove(relativePath?: string): boolean;
+			function create(path?: string): boolean;
+			function remove(path?: string): boolean;
 		}
 		
 		namespace file {
 			namespace get {
-				function size(relativePath?: string): number;
-				function text(relativePath?: string): string;
-				function bytes(relativePath?: string): Buffer;
+				function size(path?: string): number;
+				function text(path?: string): string;
+				function bytes(path?: string): Buffer;
 			}
 			
 			namespace write {
-				function text(relativePath: string, content: string): boolean;
-				function bytes(relativePath: string, bytes: Uint8Array): boolean;
+				function text(path: string, content: string): boolean;
+				function bytes(path: string, bytes: Uint8Array): boolean;
 			}
 			
 			namespace append {
-				function text(relativePath: string, content: string): boolean;
-				function textLine(relativePath: string, content: string): boolean;
-				function bytes(relativePath: string, bytes: Uint8Array): boolean;
+				function text(path: string, content: string): boolean;
+				function textLine(path: string, content: string): boolean;
+				function bytes(path: string, bytes: Uint8Array): boolean;
 			}
 			
-			function remove(relativePath?: string): boolean;
+			function copy(source: string, destination: string, force: boolean = false): boolean;
+			
+			function move(source: string, destination: string, force: boolean = false): boolean;
+			
+			function remove(path?: string): boolean;
 		}
 	}
 	

@@ -8,6 +8,7 @@ function remove(path = "") {
 		fs.unlinkSync(fullPath);
 	}
 	catch (err) {
+		// ENOENT is when the file at the path does not exist
 		if (err.code === 'ENOENT') return false;
 		throw err;
 	}

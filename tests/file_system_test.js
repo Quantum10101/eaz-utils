@@ -255,6 +255,54 @@ test("eaz.fileSystem.file.get.bytes", () => {
 	eaz.fileSystem.directory.remove("~/eztest");
 });
 
+test("eaz.fileSystem.file.copy", () => {
+	eaz.fileSystem.directory.create("../testfiles");
+	eaz.fileSystem.file.write.text("../testfiles/test.txt", "testing123");
+	expect(eaz.fileSystem.file.copy("../testfiles/test.txt", "../testfiles/copy.txt"), true);
+	expect(eaz.fileSystem.file.get.text("../testfiles/copy.txt")).toBe("testing123");
+	eaz.fileSystem.file.write.text("../testfiles/test.txt", "testing456");
+	expect(eaz.fileSystem.file.copy("../testfiles/test.txt", "../testfiles/copy.txt"), false);
+	expect(eaz.fileSystem.file.get.text("../testfiles/copy.txt")).toBe("testing123");
+	expect(eaz.fileSystem.file.copy("../testfiles/test.txt", "../testfiles/copy.txt", true), true);
+	expect(eaz.fileSystem.file.get.text("../testfiles/copy.txt")).toBe("testing456");
+	eaz.fileSystem.file.remove("../testfiles/test.txt");
+	eaz.fileSystem.file.remove("../testfiles/copy.txt");
+	eaz.fileSystem.directory.remove("../testfiles");
+	
+	eaz.fileSystem.directory.create("~/eztest");
+	eaz.fileSystem.file.write.text("~/eztest/test.txt", "testing123");
+	eaz.fileSystem.file.copy("~/eztest/test.txt", "~/eztest/copy.txt");
+	expect(eaz.fileSystem.file.get.text("~/eztest/copy.txt")).toBe("testing123");
+	eaz.fileSystem.file.remove("~/eztest/test.txt");
+	eaz.fileSystem.file.remove("~/eztest/copy.txt");
+	eaz.fileSystem.directory.remove("~/eztest");
+});
+
+test("eaz.fileSystem.file.move", () => {
+	eaz.fileSystem.directory.create("../testfiles");
+	eaz.fileSystem.file.write.text("../testfiles/test.txt", "testing123");
+	expect(eaz.fileSystem.file.move("../testfiles/test.txt", "../testfiles/moved.txt"), true);
+	expect(eaz.fileSystem.file.get.text("../testfiles/moved.txt")).toBe("testing123");
+	expect(eaz.fileSystem.checkPathType("../testfiles/test.txt")).toBe(eaz.fileSystem.PathType.DOES_NOT_EXIST);
+	eaz.fileSystem.file.write.text("../testfiles/test.txt", "testing456");
+	expect(eaz.fileSystem.file.move("../testfiles/test.txt", "../testfiles/moved.txt"), false);
+	expect(eaz.fileSystem.file.get.text("../testfiles/moved.txt")).toBe("testing123");
+	expect(eaz.fileSystem.checkPathType("../testfiles/test.txt")).toBe(eaz.fileSystem.PathType.FILE);
+	expect(eaz.fileSystem.file.move("../testfiles/test.txt", "../testfiles/moved.txt", true), true);
+	expect(eaz.fileSystem.file.get.text("../testfiles/moved.txt")).toBe("testing456");
+	expect(eaz.fileSystem.checkPathType("../testfiles/test.txt")).toBe(eaz.fileSystem.PathType.DOES_NOT_EXIST);
+	eaz.fileSystem.file.remove("../testfiles/moved.txt");
+	eaz.fileSystem.directory.remove("../testfiles");
+	
+	eaz.fileSystem.directory.create("~/eztest");
+	eaz.fileSystem.file.write.text("~/eztest/test.txt", "testing123");
+	eaz.fileSystem.file.move("~/eztest/test.txt", "~/eztest/moved.txt");
+	expect(eaz.fileSystem.file.get.text("~/eztest/moved.txt")).toBe("testing123");
+	expect(eaz.fileSystem.checkPathType("~/eztest/test.txt")).toBe(eaz.fileSystem.PathType.DOES_NOT_EXIST);
+	eaz.fileSystem.file.remove("~/eztest/moved.txt");
+	eaz.fileSystem.directory.remove("~/eztest");
+});
+
 test("eaz.fileSystem.file.remove", () => {
 	eaz.fileSystem.directory.create("../testfiles");
 	eaz.fileSystem.file.append.bytes("../testfiles/file.bin", Buffer.from([1, 2, 3, 4, 5]));

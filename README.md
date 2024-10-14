@@ -94,7 +94,13 @@ const success = eaz.fileSystem.file.append.bytes("../some/path/to/file.bin", uin
 const content = eaz.fileSystem.file.get.size("../some/path/to/file.txt");
 const content = eaz.fileSystem.file.get.text("../some/path/to/file.txt");
 const content = eaz.fileSystem.file.get.bytes("../some/path/to/file.bin");
+const success = eaz.fileSystem.file.copy("../some/path/to/source.txt", "../some/path/to/dest.txt"); // returns false if dest.txt is present
+const success = eaz.fileSystem.file.move("../some/path/to/source.txt", "../some/path/to/dest.txt", true); // forced overwrite
 const success = eaz.fileSystem.file.remove("../some/path/to/file.bin");
+
+const success = eaz.fileSystem.file.write.text("/some/path/from/root/file.txt", "hello");
+const success = eaz.fileSystem.file.write.text("~/some/path/from/home/file.txt", "hello");
+const success = eaz.fileSystem.file.write.text("some/relative/path/to/file.txt", "hello");
 ```
 
 ### Cryptography
