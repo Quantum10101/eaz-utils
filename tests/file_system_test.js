@@ -273,8 +273,14 @@ test("eaz.fileSystem.file.copy", () => {
 	eaz.fileSystem.file.write.text("~/eztest/test.txt", "testing123");
 	eaz.fileSystem.file.copy("~/eztest/test.txt", "~/eztest/copy.txt");
 	expect(eaz.fileSystem.file.get.text("~/eztest/copy.txt")).toBe("testing123");
+	eaz.fileSystem.file.copy("~/eztest/test.txt", "~/eztest/one/two/three/copy.txt");
+	expect(eaz.fileSystem.file.get.text("~/eztest/one/two/three/copy.txt")).toBe("testing123");
 	eaz.fileSystem.file.remove("~/eztest/test.txt");
 	eaz.fileSystem.file.remove("~/eztest/copy.txt");
+	eaz.fileSystem.file.remove("~/eztest/one/two/three/copy.txt");
+	eaz.fileSystem.directory.remove("~/eztest/one/two/three");
+	eaz.fileSystem.directory.remove("~/eztest/one/two");
+	eaz.fileSystem.directory.remove("~/eztest/one");
 	eaz.fileSystem.directory.remove("~/eztest");
 });
 
@@ -299,7 +305,15 @@ test("eaz.fileSystem.file.move", () => {
 	eaz.fileSystem.file.move("~/eztest/test.txt", "~/eztest/moved.txt");
 	expect(eaz.fileSystem.file.get.text("~/eztest/moved.txt")).toBe("testing123");
 	expect(eaz.fileSystem.checkPathType("~/eztest/test.txt")).toBe(eaz.fileSystem.PathType.DOES_NOT_EXIST);
+	eaz.fileSystem.file.write.text("~/eztest/test.txt", "testing123");
+	eaz.fileSystem.file.move("~/eztest/test.txt", "~/eztest/one/two/three/moved.txt");
+	expect(eaz.fileSystem.file.get.text("~/eztest/one/two/three/moved.txt")).toBe("testing123");
+	expect(eaz.fileSystem.checkPathType("~/eztest/test.txt")).toBe(eaz.fileSystem.PathType.DOES_NOT_EXIST);
 	eaz.fileSystem.file.remove("~/eztest/moved.txt");
+	eaz.fileSystem.file.remove("~/eztest/one/two/three/moved.txt");
+	eaz.fileSystem.directory.remove("~/eztest/one/two/three");
+	eaz.fileSystem.directory.remove("~/eztest/one/two");
+	eaz.fileSystem.directory.remove("~/eztest/one");
 	eaz.fileSystem.directory.remove("~/eztest");
 });
 

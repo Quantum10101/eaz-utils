@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const common = require("../../common");
 
 function move(source, destination, force = false) {
@@ -9,6 +10,9 @@ function move(source, destination, force = false) {
 		if (!force && fs.existsSync(fullDestination)) {
 			return false;
 		}
+		
+		const destinationDir = path.dirname(fullDestination);
+		fs.mkdirSync(destinationDir, { recursive: true });
 		
 		fs.renameSync(fullSource, fullDestination);
 		return true;
