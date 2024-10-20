@@ -56,6 +56,10 @@ declare module 'eaz-utils' {
 		function isEmpty(object: object): boolean;
 	}
 	
+	export namespace json {
+		function parse<T>(json: string): T;
+	}
+	
 	export namespace fileSystem {
 		namespace pathToScript {
 			function file(callStackLevel?: number): string;
@@ -105,9 +109,9 @@ declare module 'eaz-utils' {
 				function bytes(path: string, bytes: Uint8Array): boolean;
 			}
 			
-			function copy(source: string, destination: string, force: boolean = false): boolean;
+			function copy(source: string, destination: string, force: boolean): boolean;
 			
-			function move(source: string, destination: string, force: boolean = false): boolean;
+			function move(source: string, destination: string, force: boolean): boolean;
 			
 			function remove(path?: string): boolean;
 		}

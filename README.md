@@ -70,6 +70,14 @@ const flatKeyedValues = eaz.array.object.convertTo.flatKeyedValues(arrObj, "theK
 if (eaz.object.isEmpty(someObject)) ...
 ```
 
+### JSON Functions
+```js
+const obj = eaz.json.parse(json);
+
+// TypeScript support:
+const obj = eaz.json.parse<Map<string, string>>(json);
+```
+
 ### File System
 
 ```js
