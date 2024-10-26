@@ -43,10 +43,23 @@ const rightTrimmed = eaz.string.trim.wordRight(str, 'word');
 const trimmed = eaz.string.trim.wordBoth(str, 'word');
 ```
 
-### Array Union
+### Set Operations on Sets
 
 ```js
-const uniqueNumbers = eaz.array.union([1, 2, 3], [2, 3, 4], [4, 5, 6]);
+const uniqueNumbers = eaz.set.union(new Set([1, 2, 3]), new Set([2, 3, 4]), new Set([4, 5, 6]));
+const commonNumbers = eaz.set.intersect(new Set([1, 2, 4]), new Set([2, 3, 4]), new Set([2, 4, 6]));
+const differentNums = eaz.set.difference(new Set([1, 2, 3, 4, 5]), new Set([2, 4, 6]));
+```
+
+### Set Operations on Arrays
+
+```js
+const allTheNumbers = eaz.array.concat([1, 2, 3], [2, 3, 4], [4, 5, 6]); // [1, 2, 3, 2, 3, 4, 4, 5, 6]
+const uniqueNumbers = eaz.array.dedupe([1, 2, 3], [2, 3, 4], [4, 5, 6]); // [1, 2, 3, 4, 5, 6]
+const allTheNumbers = eaz.array.union([1, 2, 3], [2, 3, 4], [4, 5, 6]);  // [1, 2, 3, 2, 3, 4, 4, 5, 6]
+const commonNumbers = eaz.array.intersect([1, 2, 2, 4], [2, 2, 3, 4], [2, 2, 4, 6]); // [2, 2, 4]
+const differentNums = eaz.array.difference([1, 2, 3, 4, 4, 4, 4, 5], [2, 2, 4, 4, 6]); // [1, 3, 4, 4, 5]
+const duplicateNums = eaz.array.duplicates([3, 4, 4, 7, 8, 9, 7]); // [4, 4, 7, 7]
 ```
 
 ### Array Object Group By Key

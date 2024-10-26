@@ -36,8 +36,19 @@ declare module 'eaz-utils' {
 		}
 	}
 	
+	export namespace set {
+		function union<T>(...sets: Set<T>[]): Set<T>;
+		function intersect<T>(...sets: Set<T>[]): Set<T>;
+		function difference<T>(a: Set<T>, b: Set<T>): Set<T>;
+	}
+	
 	export namespace array {
+		function concat<T>(...arrays: T[][]): T[];
+		function dedupe<T>(...arrays: T[][]): T[];
 		function union<T>(...arrays: T[][]): T[];
+		function intersect<T>(...arrays: T[][]): T[];
+		function difference<T>(a: T[], b: T[]): T[];
+		function duplicates<T>(arr: T[]): T[];
 		
 		namespace object {
 			function groupBy<T>(array: T[], key: string): { [key: string]: T[] };
@@ -92,6 +103,10 @@ declare module 'eaz-utils' {
 		}
 		
 		namespace file {
+			function copy(source: string, destination: string, force: boolean): boolean;
+			function move(source: string, destination: string, force: boolean): boolean;
+			function remove(path?: string): boolean;
+			
 			namespace get {
 				function size(path?: string): number;
 				function text(path?: string): string;
@@ -108,12 +123,6 @@ declare module 'eaz-utils' {
 				function textLine(path: string, content: string): boolean;
 				function bytes(path: string, bytes: Uint8Array): boolean;
 			}
-			
-			function copy(source: string, destination: string, force: boolean): boolean;
-			
-			function move(source: string, destination: string, force: boolean): boolean;
-			
-			function remove(path?: string): boolean;
 		}
 	}
 	
