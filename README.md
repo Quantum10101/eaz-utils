@@ -51,6 +51,13 @@ const commonNumbers = eaz.set.intersect(new Set([1, 2, 4]), new Set([2, 3, 4]), 
 const differentNums = eaz.set.difference(new Set([1, 2, 3, 4, 5]), new Set([2, 4, 6]));
 ```
 
+### Map Functions
+
+```js
+const filteredSubset = eaz.map.filterMapByKeys(new Map([[2, "two"], [4, "four"], [6, "six"]]), new Set([4, 6]));
+const filteredSubset = eaz.map.filterMapByValues(new Map([[2, "two"], [4, "four"], [6, "six"]]), new Set(["four", "six"]));
+```
+
 ### Set Operations on Arrays
 
 ```js

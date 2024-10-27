@@ -67,6 +67,11 @@ declare module 'eaz-utils' {
 		function isEmpty(object: object): boolean;
 	}
 	
+	export namespace map {
+		function filterMapByKeys<K, V>(original: Map<K, V>, keysToRetain: Set<K>): Map<K, V>;
+		function filterMapByValues<K, V>(original: Map<K, V>, valuesToRetain: Set<V>): Map<K, V>;
+	}
+	
 	export namespace json {
 		function parse<T>(json: string): T;
 	}
